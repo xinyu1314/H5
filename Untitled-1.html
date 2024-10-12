@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="会议宣传通知">
+    <title>会议宣传通知</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Arial', sans-serif; overflow: hidden; }
+        .page { display: none; justify-content: center; align-items: center; text-align: center; height: 100vh; background-size: cover; background-position: center; }
+        .active { display: flex; flex-direction: column; }
+        .fade-in { animation: fadeIn 2s ease-out; }
+        .fade-in-text { font-size: 2.5em; color: white; animation: textFadeIn 1.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes textFadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* 会议详情页样式 */
+        .info-section { margin: 20px 0; padding: 10px; background: rgba(255, 255, 255, 0.9); border-radius: 10px; width: 80%; }
+        .info-section h2 { color: #333; margin-bottom: 10px; font-size: 1.8em; }
+        .info-section p { color: #555; font-size: 1.1em; line-height: 1.5em; }
+
+        /* 嘉宾介绍样式 */
+        .guest-list { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .guest-item { width: 30%; margin: 10px; text-align: center; }
+        .guest-item img { width: 100%; border-radius: 50%; }
+        .guest-item h3 { margin-top: 10px; font-size: 1.2em; color: #333; }
+        .guest-item p { font-size: 1em; color: #555; }
+
+        /* 背景音乐按钮 */
+        .music-btn { position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background: url('http://example.com/music-on.png') no-repeat; background-size: cover; cursor: pointer; }
+
+        /* 大装饰图片 */
+        .large-decorative-img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-height: 40vh;
+            z-index: -1; /* 保证不遮挡内容 */
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div class="page home-page active" style="background-image: url('../../图片/320.jfif');">
+        <div class="fade-in">
+            <h1 class="fade-in-text">年度科技大会</h1>
+            <p class="fade-in-text">2024年12月15日 | 北京国家会议中心</p>
+        </div>
+        
+        <!-- 会议详情 -->
+        <div class="info-section">
+            <h2>会议日程</h2>
+            <p>上午9:00 - 开幕致辞</p>
+            <p>上午10:00 - 嘉宾演讲</p>
+            <p>中午12:00 - 午餐与交流</p>
+            <p>下午14:00 - 技术研讨会</p>
+            <p>下午17:00 - 闭幕总结</p>
+        </div>
+        <div class="info-section">
+            <h2>嘉宾介绍</h2>
+            <div class="guest-list">
+                <div class="guest-item">
+                    <img src="http://example.com/guest1.jpg" alt="嘉宾1">
+                    <h3>李明 | AI专家</h3>
+                    <p>知名人工智能专家，推动AI技术发展。</p>
+                </div>
+                <div class="guest-item">
+                    <img src="http://example.com/guest2.jpg" alt="嘉宾2">
+                    <h3>张伟 | 5G技术领军人</h3>
+                    <p>5G技术领域的先驱，推动全球通信革命。</p>
+                </div>
+                <div class="guest-item">
+                    <img src="http://example.com/guest3.jpg" alt="嘉宾3">
+                    <h3>王芳 | 云计算专家</h3>
+                    <p>云计算行业的领军人物，推动数字化转型。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大装饰图片 -->
+        <img src="http://example.com/large-decorative-image.jpg" alt="装饰图片" class="large-decorative-img">
+    </div>
+
+    <!-- 背景音乐控制 -->
+    <div class="music-btn" id="musicBtn"></div>
+    <audio id="backgroundMusic" src="http://example.com/background-music.mp3" loop></audio>
+
+    <script>
+        // 背景音乐控制
+        const music = document.getElementById('backgroundMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let musicPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            musicPlaying = !musicPlaying;
+            if (musicPlaying) {
+                music.play();
+                musicBtn.style.backgroundImage = "url('http://example.com/music-on.png')";
+            } else {
+                music.pause();
+                musicBtn.style.backgroundImage = "url('http://example.com/music-off.png')";
+            }
+        });
+    </script>
+</body>
+</html>
